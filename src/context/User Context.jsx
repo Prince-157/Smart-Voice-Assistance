@@ -1,95 +1,47 @@
-import React, { createContext, useState } from "react";
-import run from "../gemini";
-export const datacontext = createContext();
-function UserContext({ children }) {
-  let [speaking, setSpeaking] = useState(false);
-  let [prompt, setPrompt] = useState("listening...");
-  let [response, setResponse] = useState(false);
-  function speak(text) {
-    let text_speak = new SpeechSynthesisUtterance(text);
-    text_speak.volume = 1;
-    text_speak.rate = 1;
-    text_speak.pitch = 1;
-    text_speak.lang = "hi-GB";
-    window.speechSynthesis.speak(text_speak);
-  }
-  async function aiResponse(prompt) {
-    let text = await run(prompt);
-    let newText =
-      text.split("**") &&
-      text.split("*") &&
-      text.replace("google", "Prince") &&
-      text.replace("Google", "Prince");
-    setPrompt(newText);
-    speak(newText);
-    setResponse(true);
-    setTimeout(() => {
-      setSpeaking(false);
-    }, 4000);
-  }
-  let speechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
-  let recognition = new speechRecognition();
-  recognition.onresult = (e) => {
-    let currentIndex = e.resultIndex;
-    let transcript = e.results[currentIndex][0].transcript;
-    setPrompt(transcript);
-    takeCommand(transcript.toLowerCase());
-  };
-  function takeCommand(command) {
-    if (command.includes("open") && command.includes("youtube")) {
-      window.open("https://www.youtube.com/", "_blank");
-      speak("opening Youtube");
-      setPrompt("opening Youtube...");
-      setTimeout(() => {
-        setSpeaking(false);
-      }, 4000);
-    } else if (command.includes("open") && command.includes("google")) {
-      window.open("https://www.google.com/", "_blank");
-      speak("opening Google");
-      setPrompt("opening Google...");
-      setTimeout(() => {
-        setSpeaking(false);
-      }, 4000);
-    } else if (command.includes("open") && command.includes("Instagram")) {
-      window.open("https://www.instagram.com/", "_blank");
-      speak("opening Instagram");
-      setPrompt("opening Instagram...");
-      setTimeout(() => {
-        setSpeaking(false);
-      }, 4000);
-    } else if (command.includes("open") && command.includes("calander")) {
-      window.open("https://www.calander.com/", "_blank");
-      speak("opening Calander");
-      setPrompt("opening Calander...");
-      setTimeout(() => {
-        setSpeaking(false);
-      }, 4000);
-    } else if (command.includes("open") && command.includes("email")) {
-      window.open("https://www.email.com/", "_blank");
-      speak("opening email");
-      setPrompt("opening email...");
-      setTimeout(() => {
-        setSpeaking(false);
-      }, 4000);
-    } else {
-      aiResponse(command);
-    }
-  }
-  let value = {
+import React, { useContext } from "react";
+import "./App.css";
+import va from "./assets/ai.png";
+import { CiMicrophoneOn } from "react-icons/ci";
+import { datacontext } from "./context/User Context";
+import speakimg from "./assets/speak.gif";
+import aigif from "./assets/aiVoice.gif";
+function App() {
+  let {
     recognition,
     speaking,
     setSpeaking,
     prompt,
-    setPrompt,
     response,
+    setPrompt,
     setResponse,
-  };
+  } = useContext(datacontext);
   return (
-    <div>
-      <datacontext.Provider value={value}>{children}</datacontext.Provider>
+    <div className="main">
+      <img src={va} alt="" id="shifra" />
+      <span>I'm Shifra,Your Advanced Smart Voice Assistant</span>
+      {!speaking ? (
+        <button
+          onClick={() => {
+            setPrompt("listening...");
+            setSpeaking(true);
+            setResponse(false);
+            recognition.start();
+          }}
+        >
+          Click here <CiMicrophoneOn />
+        </button>
+      ) : (
+        <div className="response">
+          {!response ? (
+            <img src={speakimg} alt="" id="speak" />
+          ) : (
+            <img src={aigif} alt="" id="aigif" />
+          )}
+          <p>{prompt}</p>
+        </div>
+      )}
     </div>
   );
 }
 
-export default UserContext;
+export default App;
