@@ -1,52 +1,55 @@
-🗺️ Real-Time Location Tracking App
+# 🌟 Smart Voice Assistant
 
-A real-time location-sharing web application using Node.js, Socket.io, and Leaflet.js.
+## 📌 Overview
+The **Smart Voice Assistant** is a mobile application designed to help professionals record conversations, extract actionable insights, and generate structured digital actions. Leveraging AI and voice recognition, it enhances productivity and simplifies workflows.
 
-📌 Features
+## 🚀 Features
 
-✅ Live location tracking of multiple users✅ Users' markers update in real time✅ Auto-adjusts zoom to fit all users✅ Removes disconnected users automatically✅ Uses Leaflet.js for an interactive map✅ Built with Node.js, Express, and Socket.io
+- 🎙 **Voice Recording:** Seamlessly capture conversations.
+- 📌 **Action Extraction:** Identify key actionable items.
+- 📋 **Structured Outputs:** Generate organized follow-ups and task lists.
+- 🤖 **AI-Powered Insights:** NLP and machine learning enhance accuracy.
+- 🖥 **User-Friendly Interface:** Intuitive UI for effortless navigation.
 
-📂 Project Structure
+## 🛠 Installation
 
-📁 Real-Time-Tracking-App│── 📁 public│   │── 📁 css│   │   └── style.css  # Styles for the map│   │── 📁 js│   │   └── script.js  # Handles real-time location updates│   │── 📁 images (optional)│   └── index.html  # Frontend UI│── 📁 views│   └── index.ejs  # Main page template│── 📄 server.js  # Node.js backend with Socket.io│── 📄 package.json  # Dependencies and scripts│── 📄 README.md  # This file
+Clone the repository:
+```sh
+git clone https://github.com/Prince-157/Smart-Voice-Assistance.git
+```
 
-🛠️ Installation
+Navigate to the project directory:
+```sh
+cd Smart-Voice-Assistance/
+```
 
-1️⃣ Clone the Repository
-
-git clone https://github.com/your-username/real-time-tracking-app.git
-cd real-time-tracking-app
-
-2️⃣ Install Dependencies
-
+Install dependencies:
+```sh
 npm install
+```
 
-3️⃣ Run the Server
-
+Run the application:
+```sh
 npm start
+```
 
-4️⃣ Open in Browser
+## 🏗 Technologies Used
 
-http://localhost:3000
+- **Programming Languages:** JavaScript, React.js, CSS
+- **Frameworks & Libraries:** @google/generative-ai, React, React Icons
+- **Cloud Services:** Google Cloud
 
-🖥️ Technologies Used
+## 📌 Usage
 
-Node.js – Backend server
+1. Open the application on your mobile device.
+2. Start recording a conversation.
+3. AI processes the recording and extracts key points.
+4. View structured digital actions and export them as needed.
 
-Express.js – Web framework
+## 📞 Contact
 
-Socket.io – Real-time communication
+- 📌 **GitHub:** [Smart Voice Assistance](https://github.com/Prince-157/Smart-Voice-Assistance)
+- 📧 **Email:** prince797970@gmail.com
+- 👤 **Developer:** Prince Kumar
 
-Leaflet.js – Interactive maps
-
-EJS – Template engine
-
-HTML, CSS, JavaScript – Frontend
-
-📌 How It Works
-
-1️⃣ User opens the website2️⃣ Their location is shared automatically (if permission is granted)3️⃣ Users' locations update in real time on the map4️⃣ If a user disconnects, their marker disappears
-
-💡 Future Improvements📍 Add user names with markers🌍 Implement custom map styles📱 Improve mobile UI/UX🛠️ Add authentication for privacy
-
-🔗 Live Demo: Real-Time Tracking App
+## 🔗 Live Demo: 
